@@ -13,13 +13,17 @@ export default function TypingSpeed() {
     setTimeLeft(timerValue)
   }, [timerValue])
 
+  const handleReset = () => {
+    setTimeLeft(timerValue)
+  }
+
   return (
     <>
       {/* Когда пользователь начинает печатать фильтр исчезает и появляется отсчет */}
       {!isTyping && !wpm && <TimeFilter />}
       {isTyping && <p className="text-2xl ">{timeLeft}s</p>}
       <div className="relative overflow-hidden">
-        <TextDisplay />
+        <TextDisplay onReset={handleReset} />
         <TextInput timeLeft={timeLeft} setTimeLeft={setTimeLeft} />
       </div>
     </>

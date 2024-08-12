@@ -3,7 +3,7 @@ import { useAppSelector } from "../../hooks/useAppSelector"
 import { typingSelector } from "../../store/selectors"
 import { useActions } from "../../hooks/useActions"
 
-export default function TextDisplay() {
+export default function TextDisplay({ onReset }: { onReset: () => void }) {
   const { text, input, wpm, errors } = useAppSelector(typingSelector)
   const { resetInput } = useActions()
 
@@ -26,8 +26,9 @@ export default function TextDisplay() {
     )
   })
 
-  const handleReset = () => {
+  const handleRestart = () => {
     resetInput()
+    onReset()
   }
 
   return (
@@ -48,7 +49,7 @@ export default function TextDisplay() {
           </div>
 
           <button
-            onClick={handleReset}
+            onClick={handleRestart}
             className="text-5xl text-[#8e9397] duration-200 cursor-pointer hover:text-[#edf1f5]"
           >
             <MdRestartAlt />

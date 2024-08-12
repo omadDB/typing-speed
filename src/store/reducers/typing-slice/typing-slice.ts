@@ -48,7 +48,7 @@ const typingSlice = createSlice({
       const timeInMinutes = state.timerValue / 60
       state.wpm = calculateWPM(state.input, timeInMinutes)
       state.errors = calculateErrors(state.text, state.input)
-      state.isTyping = false // Stop typing when the timer is up
+      state.isTyping = false
     }),
     // Выполняется при нажатии на кнопку рестарта
     resetInput: create.reducer((state) => {
