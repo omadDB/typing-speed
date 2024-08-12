@@ -12,8 +12,13 @@ interface IWords {
   currentCharIndex: number
 }
 
+const generateText = () => {
+  const words = generate(100)
+  return Array.isArray(words) ? words.join(" ") : ""
+}
+
 const initialState = <IWords>{
-  text: generate(100).join(" "),
+  text: generateText(),
   input: "",
   isTyping: false,
   timerValue: 15,
@@ -41,7 +46,7 @@ const typingSlice = createSlice({
       state.timerValue = action.payload
       state.isTyping = false
       state.input = ""
-      state.text = generate(100).join(" ")
+      state.text = generateText()
     }),
     // Выполняется как только заканчивается время таймера, ведется расчёт wpm и errors с помощью функций с helpers.ts
     calculateResults: create.reducer((state) => {
@@ -53,7 +58,7 @@ const typingSlice = createSlice({
     // Выполняется при нажатии на кнопку рестарта
     resetInput: create.reducer((state) => {
       state.input = ""
-      state.text = generate(100).join(" ")
+      state.text = generateText()
       state.isTyping = false
       state.wpm = 0
       state.errors = 0
