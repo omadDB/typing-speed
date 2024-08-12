@@ -16,3 +16,25 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* Для удобства работы с телефона */
+@media (max-width: 640px) {
+  body {
+    align-items: start;
+    padding-top: 50px;
+  }
+}
