@@ -17,7 +17,15 @@ body {
   justify-content: center;
 }
 
-@keyframes blink {
+/* Для удобства работы с телефона */
+@media (max-width: 640px) {
+  body {
+    align-items: start;
+    padding-top: 50px;
+  }
+}
+
+/* @keyframes blink {
   0%,
   100% {
     opacity: 1;
@@ -29,12 +37,4 @@ body {
 
 .animate-blink {
   animation: blink 1s infinite;
-}
-
-/* Для удобства работы с телефона */
-@media (max-width: 640px) {
-  body {
-    align-items: start;
-    padding-top: 50px;
-  }
-}
+} */

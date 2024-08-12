@@ -7,7 +7,7 @@ export default function TextDisplay() {
   const { text, input, wpm, errors } = useAppSelector(typingSelector)
   const { resetInput } = useActions()
 
-  // Calculate renderedText directly in the component body
+  // Калькуляции для изменения цвета символов при вводе (красный - если неправильно, зелёный - если правильно)
   const renderedText = text.split("").map((char, index) => {
     let className = ""
 
@@ -26,10 +26,15 @@ export default function TextDisplay() {
     )
   })
 
+  const handleReset = () => {
+    resetInput()
+  }
+
   return (
     <div className="opacity-75 md:w-[600px] text-xl">
       {!wpm && renderedText}
-      {wpm && (
+      {/* После окончания времени таймера выводится экран с результатами */}
+      {wpm ? (
         <div className="flex flex-col items-center gap-8">
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-0 p-12 border-2 text-5xl border-[#686c70] rounded-xl">
             <div className="flex flex-col items-center gap-3 pr-0 sm:pr-12 border-r-0 sm:border-r-2  border-[#686c70]">
@@ -43,13 +48,13 @@ export default function TextDisplay() {
           </div>
 
           <button
-            onClick={() => resetInput()}
+            onClick={handleReset}
             className="text-5xl text-[#8e9397] duration-200 cursor-pointer hover:text-[#edf1f5]"
           >
             <MdRestartAlt />
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   )
 }

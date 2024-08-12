@@ -15,6 +15,7 @@ export default function TypingSpeed() {
 
   return (
     <>
+      {/* Когда пользователь начинает печатать фильтр исчезает и появляется отсчет */}
       {!isTyping && !wpm && <TimeFilter />}
       {isTyping && <p className="text-2xl ">{timeLeft}s</p>}
       <div className="relative overflow-hidden">

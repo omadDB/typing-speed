@@ -57,6 +57,7 @@ const typingSlice = createSlice({
       state.isTyping = false
       state.wpm = 0
       state.errors = 0
+      state.currentCharIndex = 0
     }),
   }),
 })

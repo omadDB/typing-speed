@@ -17,6 +17,7 @@ export default function TextInput({
     setInput(e.target.value)
   }
 
+  // Для контроля отсчета как только пользователь начал ввод текста
   useEffect(() => {
     if (isTyping && timeLeft > 0) {
       const countdown = setInterval(() => {
@@ -39,7 +40,7 @@ export default function TextInput({
       disabled={timeLeft === 0}
       autoFocus
       // Данный элемент наложен на TextDisplay с генерированным текстом, для того чтобы UX был хороший и было также интерактивно как у monkeytype.com
-      className={`absolute top-0 left-0 w-full h-full text-transparent outline-none opacity-0 ${
+      className={` absolute top-0 left-0 w-full h-full text-transparent outline-none opacity-0 ${
         wpm ? "left-[9999px]" : ""
       }`}
     />
